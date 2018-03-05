@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hourly_logger_rotator (0.1.0)
+    hourly_logger_rotator (0.2.0)
 
 GEM
   remote: https://rubygems.org/
