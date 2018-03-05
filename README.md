@@ -1,0 +1,3 @@
+# HourlyLoggerRotator
+
+WIP
