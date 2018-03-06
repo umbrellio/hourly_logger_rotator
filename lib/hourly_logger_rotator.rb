@@ -17,7 +17,7 @@ module HourlyLoggerRotator
     end
 
     def default_rotation_period=(period)
-      raise unsupported_warning unless hourly_mixin
+      raise unsupported_warning if period == "hourly" && !hourly_mixin
 
       mixin = Module.new do
         define_method(:initialize) do |logdev, shift_age = period, *args|
