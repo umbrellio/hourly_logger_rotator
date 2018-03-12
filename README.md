@@ -23,12 +23,12 @@ Logger.new('some_log_file', 'hourly')
 Keep in mind that loggers created before the gem is required will not
 support the hourly rotation period. Specifically, in case of a Rails app,
 require this before Rails initializes; a good place to do that is in `application.rb`
-right before requiring `boot`
+right after requiring `boot`
 
 ### Setting default rotation period
 
 `HourlyLoggerRotator.default_rotation_period=(some_period)` will make it so newly created
-Loggers have a rotation period of `some_period` unless you provide an explicit
+loggers have a rotation period of `some_period` unless you provide an explicit
 period in the constructor
 
 ## License
@@ -38,5 +38,6 @@ Released under MIT License
 Created by Dmitry Gubitskiy
 
 <a href="https://github.com/umbrellio/">
-<img style="float: left;" src="https://umbrellio.github.io/Umbrellio/supported_by_umbrellio.svg" alt="Supported by Umbrellio" width="439" height="72">
+<img style="float: left;" src="https://umbrellio.github.io/Umbrellio/supported_by_umbrellio.svg"
+alt="Supported by Umbrellio" width="439" height="72">
 </a>
