@@ -9,3 +9,4 @@
 /log
 .rspec_status
 .ruby-version
+Gemfile.lock
