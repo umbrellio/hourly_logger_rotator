@@ -6,5 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
+/log
 .rspec_status
 .ruby-version

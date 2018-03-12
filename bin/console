@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
+require "pry"
 require "hourly_logger_rotator"
 
-require "pry"
 Pry.start
