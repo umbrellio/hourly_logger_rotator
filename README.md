@@ -2,6 +2,8 @@
 
 Logger class patch for hourly log rotation support 
 
+[![Build Status](https://travis-ci.org/umbrellio/hourly_logger_rotator.svg?branch=master)](https://travis-ci.org/umbrellio/hourly_logger_rotator)
+
 ## Requirements
 
 Ruby 2.3, 2.4 or 2.5
