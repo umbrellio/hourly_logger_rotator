@@ -4,7 +4,7 @@ require "bundler/setup"
 require "hourly_logger_rotator"
 require "timecop"
 
-ENV['TZ'] = 'UTC'
+ENV["TZ"] = "UTC"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

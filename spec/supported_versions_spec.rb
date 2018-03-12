@@ -3,7 +3,7 @@
 require "logger"
 
 RSpec.describe HourlyLoggerRotator do
-  next if RUBY_VERSION.start_with?('2.2.')
+  next if RUBY_VERSION.start_with?("2.2.")
 
   it "rotates hourly" do
     # Workaround for how Logger in some Ruby versions determines time changes
@@ -12,8 +12,8 @@ RSpec.describe HourlyLoggerRotator do
     HourlyLoggerRotator.default_rotation_period = "hourly"
     Timecop.freeze("2000.01.01 12:30")
 
-    log_dir = Pathname.new(File.expand_path('../../log', __FILE__))
-    Dir.mkdir(log_dir) unless File.exists?(log_dir)
+    log_dir = Pathname.new(File.expand_path("../../log", __FILE__))
+    Dir.mkdir(log_dir) unless File.exist?(log_dir)
     system("rm #{log_dir}/test_hourly_rotation.log* 2> /dev/null")
 
     logger = Logger.new(log_dir.join("test_hourly_rotation.log"))
