@@ -9,4 +9,5 @@
 /log
 .rspec_status
 .ruby-version
+*.log
 Gemfile.lock

@@ -26,6 +26,8 @@ module HourlyLoggerRotator
         @dev.close rescue nil
         File.rename(@filename.to_s, age_file)
         @dev = create_logfile(@filename)
+        HourlyLoggerRotator::Gzip.new(age_file).call if HourlyLoggerRotator.gzip
+        HourlyLoggerRotator::LogsLifetime.new(Pathname.new(@filename).dirname).call
         true
       end
 

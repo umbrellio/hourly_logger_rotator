@@ -19,6 +19,7 @@ RSpec.configure do |config|
 
   config.before do
     HourlyLoggerRotator.default_rotation_period = nil
+    HourlyLoggerRotator.gzip=(false)
     Timecop.return
   end
 end

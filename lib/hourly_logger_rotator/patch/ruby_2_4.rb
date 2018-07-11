@@ -24,6 +24,27 @@ module HourlyLoggerRotator
         end
       end
 
+      def shift_log_period(period_end)
+        suffix = period_end.strftime(@shift_period_suffix)
+        age_file = "#{@filename}.#{suffix}"
+        if FileTest.exist?(age_file)
+          # try to avoid filename crash caused by Timestamp change.
+          idx = 0
+          # .99 can be overridden; avoid too much file search with 'loop do'
+          while idx < 100
+            idx += 1
+            age_file = "#{@filename}.#{suffix}.#{idx}"
+            break unless FileTest.exist?(age_file)
+          end
+        end
+        @dev.close rescue nil
+        File.rename("#{@filename}", age_file)
+        @dev = create_logfile(@filename)
+        HourlyLoggerRotator::Gzip.new(age_file).call if HourlyLoggerRotator.gzip
+        HourlyLoggerRotator::LogsLifetime.new(Pathname.new(@filename).dirname).call
+        true
+      end
+
       def next_rotate_time(now, shift_age)
         case shift_age
         when "hourly"

@@ -1,6 +1,6 @@
 # HourlyLoggerRotator
 
-Logger class patch for hourly log rotation support 
+Logger class patch for hourly log rotation support
 
 [![Build Status](https://travis-ci.org/umbrellio/hourly_logger_rotator.svg?branch=master)](https://travis-ci.org/umbrellio/hourly_logger_rotator)
 
@@ -32,6 +32,17 @@ right after requiring `boot`
 `HourlyLoggerRotator.default_rotation_period=(some_period)` will make it so newly created
 loggers have a rotation period of `some_period` unless you provide an explicit
 period in the constructor
+
+### Setting autogzip on
+
+`HourlyLoggerRotator.gzip=(true)`
+adds gzipping for rotated logs (disabled by default)
+
+### Setting logs LogsLifetime
+
+`HourlyLoggerRotator.logs_lifetime=(1.week)`
+
+removes logs elder than chosen period
 
 ## License
 Released under MIT License
