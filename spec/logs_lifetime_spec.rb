@@ -7,6 +7,14 @@ RSpec.describe HourlyLoggerRotator do
   next if RUBY_VERSION.start_with?("2.2.")
 
   context "removes old files" do
+    let(:expected_files) do
+      [
+        "test_hourly_rotation.log",
+        "test_hourly_rotation.log.doc",
+        "test_rotation.log"
+      ]
+    end
+
     it "works" do
       HourlyLoggerRotator.gzip = true
       HourlyLoggerRotator.logs_lifetime = 1
@@ -19,6 +27,8 @@ RSpec.describe HourlyLoggerRotator do
       log_dir = Pathname.new(File.expand_path("../../log", __FILE__))
       Dir.mkdir(log_dir) unless File.exist?(log_dir)
       system("rm #{log_dir}/test_hourly_rotation.log* 2> /dev/null")
+      system("touch #{log_dir}/test_hourly_rotation.log.doc")
+      system("touch #{log_dir}/test_rotation.log")
 
       logger = Logger.new(log_dir.join("test_hourly_rotation.log"))
       logger.debug("Line 1")
@@ -28,14 +38,11 @@ RSpec.describe HourlyLoggerRotator do
       logger.debug("Line 3")
       logger.debug("Line 4")
 
-      system("touch #{log_dir}/test_hourly_rotation.log.doc")
+      logs = Dir.glob(log_dir.join("*.log*")).sort.reverse
 
-      logs = Dir.glob(log_dir.join("test_hourly_rotation.log*")).sort.reverse
+      expect(logs.count).to eq(expected_files.size)
 
-      expect(logs.count).to eq(2)
-
-      expected = ["test_hourly_rotation.log", "test_hourly_rotation.log.doc"]
-      expect(logs.map { |log| File.basename(log) }).to match_array(expected)
+      expect(logs.map { |log| File.basename(log) }).to match_array(expected_files)
     end
   end
 end
