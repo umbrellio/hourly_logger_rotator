@@ -8,8 +8,8 @@ RSpec.describe HourlyLoggerRotator do
 
   context "removes old files" do
     it "works" do
-      HourlyLoggerRotator.gzip=(true)
-      HourlyLoggerRotator.logs_lifetime=(1)
+      HourlyLoggerRotator.gzip = true
+      HourlyLoggerRotator.logs_lifetime = 1
       # Workaround for how Logger in some Ruby versions determines time changes
       # allow_any_instance_of(File).to receive_message_chain("stat.mtime") { Time.now }
 

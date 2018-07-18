@@ -7,17 +7,17 @@ RSpec.describe HourlyLoggerRotator do
 
   context "gzip is not supported by OS" do
     before do
-      allow(HourlyLoggerRotator).to(receive(:system).with(/gzip --help/) { false })
+      allow(HourlyLoggerRotator).to(receive(:system).with(/gzip --help/).and_return(false))
     end
 
     it "raises an Error" do
-      expect { HourlyLoggerRotator.gzip=(true) }.to raise_error(RuntimeError, /Unable to find/)
+      expect { HourlyLoggerRotator.gzip = true }.to raise_error(RuntimeError, /Unable to find/)
     end
   end
 
   context "gzipping files" do
     it "works" do
-      HourlyLoggerRotator.gzip=(true)
+      HourlyLoggerRotator.gzip = true
       # Workaround for how Logger in some Ruby versions determines time changes
       allow_any_instance_of(File).to receive_message_chain("stat.mtime") { Time.now }
 
