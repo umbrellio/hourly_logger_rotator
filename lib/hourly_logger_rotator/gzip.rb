@@ -7,7 +7,6 @@ class HourlyLoggerRotator::Gzip
 
   def call
     return unless HourlyLoggerRotator.gzip
-    puts "gzipping #{filename}"
-    system("gzip #{filename}")
+    system("gzip #{filename} &")
   end
 end

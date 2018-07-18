@@ -4,7 +4,6 @@ require "logger"
 require "hourly_logger_rotator/version"
 require "hourly_logger_rotator/gzip"
 require "hourly_logger_rotator/logs_lifetime"
-require 'mkmf'
 
 pattern = File.join(File.dirname(__FILE__), "hourly_logger_rotator", "patch", "*.rb")
 Dir[pattern].each { |file| require_relative(file) }
@@ -51,7 +50,7 @@ module HourlyLoggerRotator
     # supplied value or raises an Error
     #
     def gzip=(enabled)
-      raise unable_to_find_gzip if enabled && !find_executable("gzip")
+      raise unable_to_find_gzip if enabled && !system("gzip --help &> /dev/null")
       @gzip = enabled
     end
 

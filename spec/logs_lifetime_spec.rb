@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 require "logger"
-require "active_support/all"
 
 RSpec.describe HourlyLoggerRotator do
   next if RUBY_VERSION.start_with?("2.2.")
@@ -10,7 +9,7 @@ RSpec.describe HourlyLoggerRotator do
   context "removes old files" do
     it "works" do
       HourlyLoggerRotator.gzip=(true)
-      HourlyLoggerRotator.logs_lifetime=(1.second)
+      HourlyLoggerRotator.logs_lifetime=(1)
       # Workaround for how Logger in some Ruby versions determines time changes
       # allow_any_instance_of(File).to receive_message_chain("stat.mtime") { Time.now }
 

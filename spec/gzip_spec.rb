@@ -7,11 +7,11 @@ RSpec.describe HourlyLoggerRotator do
 
   context "gzip is not supported by OS" do
     before do
-      allow(File).to(receive(:stat).with(/.*gzip/) { raise Errno::ENOENT, "test" })
+      allow(HourlyLoggerRotator).to(receive(:system).with(/gzip --help/) { false })
     end
 
     it "raises an Error" do
-      expect { HourlyLoggerRotator.gzip=(true) }.to raise_error(RuntimeError)
+      expect { HourlyLoggerRotator.gzip=(true) }.to raise_error(RuntimeError, /Unable to find/)
     end
   end
 

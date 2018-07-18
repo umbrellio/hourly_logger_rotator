@@ -35,14 +35,16 @@ period in the constructor
 
 ### Setting autogzip on
 
-`HourlyLoggerRotator.gzip=(true)`
+`HourlyLoggerRotator.gzip=true`
 adds gzipping for rotated logs (disabled by default)
 
 ### Setting logs LogsLifetime
 
 `HourlyLoggerRotator.logs_lifetime=(1.week)`
+or
+`HourlyLoggerRotator.logs_lifetime=(604800)`
 
-removes logs elder than chosen period
+removes logs older than chosen period
 
 ## License
 Released under MIT License
