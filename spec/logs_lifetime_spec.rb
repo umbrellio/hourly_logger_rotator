@@ -28,11 +28,13 @@ RSpec.describe HourlyLoggerRotator do
       logger.debug("Line 3")
       logger.debug("Line 4")
 
-      logs = Dir.glob(log_dir.join("test_hourly_rotation.log*")).sort.reverse
-      p logs
-      expect(logs.count).to eq(1)
+      system("touch #{log_dir}/test_hourly_rotation.log.doc")
 
-      expected = ["test_hourly_rotation.log"]
+      logs = Dir.glob(log_dir.join("test_hourly_rotation.log*")).sort.reverse
+
+      expect(logs.count).to eq(2)
+
+      expected = ["test_hourly_rotation.log", "test_hourly_rotation.log.doc"]
       expect(logs.map { |log| File.basename(log) }).to match_array(expected)
     end
   end
