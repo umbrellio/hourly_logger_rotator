@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require "pathname"
 require "logger"
 
 module HourlyLoggerRotator
@@ -27,7 +26,7 @@ module HourlyLoggerRotator
         File.rename(@filename.to_s, age_file)
         @dev = create_logfile(@filename)
         HourlyLoggerRotator::Gzip.new(age_file).call if HourlyLoggerRotator.gzip
-        HourlyLoggerRotator::LogsLifetime.new(Pathname.new(@filename).dirname).call
+        HourlyLoggerRotator::LogsLifetime.new(@filename).call
         true
       end
 

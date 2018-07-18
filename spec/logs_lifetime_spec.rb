@@ -29,6 +29,7 @@ RSpec.describe HourlyLoggerRotator do
       logger.debug("Line 4")
 
       logs = Dir.glob(log_dir.join("test_hourly_rotation.log*")).sort.reverse
+      p logs
       expect(logs.count).to eq(1)
 
       expected = ["test_hourly_rotation.log"]

@@ -1,15 +1,15 @@
 require "pathname"
 
 class HourlyLoggerRotator::LogsLifetime
-  attr_accessor :dirname
+  attr_accessor :pathname
 
-  def initialize(dirname)
-    self.dirname = dirname
+  def initialize(filename)
+    self.pathname = Pathname.new(filename)
   end
 
   def call
     return unless HourlyLoggerRotator.logs_lifetime
-    Pathname.new(dirname).each_child do |entry|
+    Dir.glob(pathname.dirname.join("#{pathname.basename}*")).map { |f| Pathname.new(f) } .each do |entry|
       next unless entry.file?
       old_enough =  entry.mtime < (Time.now - HourlyLoggerRotator.logs_lifetime)
 
