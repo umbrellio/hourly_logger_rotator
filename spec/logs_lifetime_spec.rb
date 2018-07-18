@@ -10,7 +10,7 @@ RSpec.describe HourlyLoggerRotator do
     let(:expected_files) do
       [
         "test_hourly_rotation.log",
-        "test_hourly_rotation.log.doc",
+        "test_hourly_rotation.log.123.doc",
         "test_rotation.log",
       ]
     end
@@ -27,7 +27,7 @@ RSpec.describe HourlyLoggerRotator do
       log_dir = Pathname.new(File.expand_path("../../log", __FILE__))
       Dir.mkdir(log_dir) unless File.exist?(log_dir)
       system("rm #{log_dir}/test_hourly_rotation.log* 2> /dev/null")
-      system("touch #{log_dir}/test_hourly_rotation.log.doc")
+      system("touch #{log_dir}/test_hourly_rotation.log.123.doc")
       system("touch #{log_dir}/test_rotation.log")
 
       logger = Logger.new(log_dir.join("test_hourly_rotation.log"))
