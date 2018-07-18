@@ -11,7 +11,7 @@ RSpec.describe HourlyLoggerRotator do
       [
         "test_hourly_rotation.log",
         "test_hourly_rotation.log.doc",
-        "test_rotation.log"
+        "test_rotation.log",
       ]
     end
 
