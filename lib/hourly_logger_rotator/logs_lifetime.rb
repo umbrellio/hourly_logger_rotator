@@ -1,3 +1,5 @@
+require "pathname"
+
 class HourlyLoggerRotator::LogsLifetime
   attr_accessor :dirname
 

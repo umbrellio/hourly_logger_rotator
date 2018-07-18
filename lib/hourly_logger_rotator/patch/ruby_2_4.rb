@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require "logger"
+require "pathname"
 
 module HourlyLoggerRotator
   module Patch
