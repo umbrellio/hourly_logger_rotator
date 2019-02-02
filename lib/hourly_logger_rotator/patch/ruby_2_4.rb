@@ -2,9 +2,7 @@
 
 module HourlyLoggerRotator
   module Patch
-    # rubocop:disable Naming/ClassAndModuleCamelCase
-    module Ruby_2_4
-      # rubocop:enable Naming/ClassAndModuleCamelCase
+    module Ruby_2_4 # rubocop:disable Naming/ClassAndModuleCamelCase
       SiD = Logger::Period::SiD
 
       def initialize(log = nil, shift_age: nil, shift_size: nil, shift_period_suffix: nil)
