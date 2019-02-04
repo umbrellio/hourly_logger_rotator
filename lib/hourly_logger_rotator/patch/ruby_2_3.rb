@@ -4,9 +4,7 @@ require "logger"
 
 module HourlyLoggerRotator
   module Patch
-    # rubocop:disable Naming/ClassAndModuleCamelCase
-    module Ruby_2_3
-      # rubocop:enable Naming/ClassAndModuleCamelCase
+    module Ruby_2_3 # rubocop:disable Naming/ClassAndModuleCamelCase
       SiD = Logger::Period::SiD
 
       def shift_log_period(period_end)
