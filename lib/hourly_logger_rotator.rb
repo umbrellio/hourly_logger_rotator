@@ -34,11 +34,12 @@ module HourlyLoggerRotator
       return @mixin if defined?(@mixin)
 
       mixin_name = "HourlyLoggerRotator::Patch::Ruby_#{RUBY_VERSION.split('.').first(2).join('_')}"
-      @mixin = begin
-        Module.const_get(mixin_name)
-      rescue NameError
-        nil
-      end
+      @mixin =
+        begin
+          Module.const_get(mixin_name)
+        rescue NameError
+          nil
+        end
     end
 
     def unsupported_warning

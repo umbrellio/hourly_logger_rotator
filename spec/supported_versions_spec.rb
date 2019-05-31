@@ -12,7 +12,7 @@ RSpec.describe HourlyLoggerRotator do
     HourlyLoggerRotator.default_rotation_period = "hourly"
     Timecop.freeze("2000.01.01 12:30")
 
-    log_dir = Pathname.new(File.expand_path("../../log", __FILE__))
+    log_dir = Pathname.new(File.expand_path("../log", __dir__))
     Dir.mkdir(log_dir) unless File.exist?(log_dir)
     system("rm #{log_dir}/test_hourly_rotation.log* 2> /dev/null")
 
