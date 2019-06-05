@@ -1,8 +1,6 @@
-# HourlyLoggerRotator
+# HourlyLoggerRotator &middot; [![Gem Version](https://badge.fury.io/rb/hourly_logger_rotator.svg)](https://badge.fury.io/rb/hourly_logger_rotator) [![Build Status](https://travis-ci.org/umbrellio/hourly_logger_rotator.svg?branch=master)](https://travis-ci.org/umbrellio/hourly_logger_rotator) [![Coverage Status](https://coveralls.io/repos/github/umbrellio/hourly_logger_rotator/badge.svg?branch=master)](https://coveralls.io/github/umbrellio/hourly_logger_rotator?branch=master)
 
 Logger class patch for hourly log rotation support
-
-[![Build Status](https://travis-ci.org/umbrellio/hourly_logger_rotator.svg?branch=master)](https://travis-ci.org/umbrellio/hourly_logger_rotator)
 
 ## Requirements
 

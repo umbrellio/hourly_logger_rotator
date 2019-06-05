@@ -5,8 +5,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "hourly_logger_rotator/version"
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = ">= 2.3.8"
+
+  gem_version = HourlyLoggerRotator::VERSION
+  release_version = ENV["TRAVIS"] ? "#{gem_version}.#{ENV["TRAVIS_BUILD_NUMBER"]}" : gem_version
+
   spec.name    = "hourly_logger_rotator"
-  spec.version = HourlyLoggerRotator::VERSION
+  spec.version = release_version
   spec.authors = ["Dmitry Gubitskiy"]
   spec.email   = ["d.gubitskiy@gmail.com", "oss@umbrellio.biz"]
 
