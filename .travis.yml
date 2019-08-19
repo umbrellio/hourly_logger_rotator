@@ -1,20 +1,21 @@
 language: ruby
+
 sudo: false
+
+rvm:
+  - 2.3
+  - 2.4
+  - 2.5
+  - 2.6
+  - ruby-head
+
 before_install: gem install bundler
-env: SUITE="rspec"
-script: bundle exec $SUITE
+
 matrix:
   fast_finish: true
-  include:
-  - rvm: 2.3
-  - rvm: 2.4
-  - rvm: 2.5
-  - rvm: 2.6
-  - rvm: ruby-head
-  - rvm: 2.6
-    env: SUITE="rubocop"
   allow_failures:
-  - rvm: ruby-head
+    - rvm: ruby-head
+
 deploy:
   api_key:
     secure: KuSLs/hS2gsUmBV0EVb9NDCMU4aUlY52ZXVZD82kKGxZh1fQQe/KZJknQuCd2r9bA9MQBSV1vK0OnmAaWnJqW/IwIt+7RP/LiMm3hZMpiLKzC3IC9bAP4zwHpzJMj95f7K6JSaX3zwH4wY3mcyPEA2qIuu3RDuDsOBBCQwEsyIxnUYGoM7hqJ9anXpf45rUISkGF+mVdQghOybDRVUaxMjaeWzQSpwqS66SxNgsPoABY4OLboM8kJKYG1npBQxxsn/S3tnMTinZaOrY2JyNbLsu741qD+WWRZDPuw9/wQfiWE7au/gVRKW7htwmwkBMfF7OLnM2/bhLhbT7dcf70xHUodoqHcxefo+tq8d4MHnoGMqPPOb9J1L0p9QLALNG7/U9upXlB9n3IBuIcCHXYY2CL7Cf4HYNx4SASndrc5d/iZe4NCdSL06wNdTfxvNHK7JWzHE/lxhQuLyoDIqtSi/L0/VwWAF9OPx+zn1cpR7UrNxcUU+eXuExiGV4AwRhUjsd8JpnW0+fPbnot3jK7eo9JnnbOgY967GHeIyfwLvP2FmtI7Xx/eBrbWLPk+9ZEmCm/+Mlen3b3S0NQW2+6SlmKzje/nggPpgmG6Ln3MHbkPw1EhTislS5w6/hq3j5tPchbQXHOZ5g90ieRe/DvaPYmVAHMmQWMPbBesHAzIJ0=
