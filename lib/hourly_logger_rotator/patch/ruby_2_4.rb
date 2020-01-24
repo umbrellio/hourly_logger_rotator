@@ -5,7 +5,14 @@ module HourlyLoggerRotator
     module Ruby_2_4 # rubocop:disable Naming/ClassAndModuleCamelCase
       SiD = Logger::Period::SiD
 
-      def initialize(log = nil, shift_age: nil, shift_size: nil, shift_period_suffix: nil)
+      # rubocop:disable Lint/UnusedMethodArgument
+      def initialize(
+        log = nil,
+        shift_age: nil,
+        shift_size: nil,
+        shift_period_suffix: nil,
+        binmode: nil
+      )
         @dev = @filename = @shift_age = @shift_size = @shift_period_suffix = nil
         mon_initialize
         set_dev(log)
@@ -21,6 +28,7 @@ module HourlyLoggerRotator
           end
         end
       end
+      # rubocop:enable Lint/UnusedMethodArgument
 
       def next_rotate_time(now, shift_age)
         case shift_age
