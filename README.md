@@ -4,7 +4,7 @@ Logger class patch for hourly log rotation support
 
 ## Requirements
 
-Ruby 2.3, 2.4, 2.5 or 2.6
+Ruby 2.3, 2.4, 2.5, 2.6 or 2.7
 
 ## Installation
 
